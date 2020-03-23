@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SOS PET</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body> 
+    <div class="container mt-4">
+        <form action="submit", method="POST">{% csrf_token %}
+            <h2> SOS PET</h2>
+            <div class="form-group">
+                <label  for="username">Usuario</label>
+                <input type="text", class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+
+            <div class="form-group">
+                <label  for="password">Senha</label>
+                <input type="password", class="form-control" id="password" name="password" placeholder="Senha">
+            </div>
+
+            <div>
+                {% for message in messages %}
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong>{{ message }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-success">Entrar</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

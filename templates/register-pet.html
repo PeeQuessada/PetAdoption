@@ -1,0 +1,34 @@
+{% extends "model-page.html" %} 
+
+{% block content %}  
+    <h1 class="text-center">Cadastrar Pet para adoção </h1>
+
+    <form enctype="multipart/form-data" action="submit", method="POST">{% csrf_token %}
+        <div class="container">
+            <div class="form-group" >
+                <label for="email">Email: </label>
+                <input class="form-control" name="email" type="email" />
+            </div>
+            <div class="form-group" >
+                <label for="phone">Telefone: </label>
+                <input class="form-control" name="phone" type="text" />
+            </div>
+            <div class="form-group" >
+                <label for="city">Cidade: </label>
+                <input class="form-control" name="city" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="description">Comment:</label>
+                <textarea class="form-control" name="description" rows="3" ></textarea>
+            </div>
+            <div class="form-group" >
+                <input class="form-control-file vorder" name="file" type="file" accept="image/*" />
+            </div>
+            <button class="btn btn-success">
+                    Cadastrar <span class="badge badge-success"></span>
+            </button>
+        </div>
+    </form>
+
+
+{% endblock %}
