@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -82,4 +83,7 @@ def submit_login(request):
         else:
             messages.error(request, 'Usário e senha inválido. Favor tentar novamente')
     return redirect('/login/')
-    
+
+def error_404_view(request, exception):
+    return render(request, 'page-not-found.html')
+
