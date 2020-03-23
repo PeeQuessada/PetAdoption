@@ -4,28 +4,34 @@
     <h1 class="text-center">Cadastrar Pet para adoção </h1>
 
     <form enctype="multipart/form-data" action="submit", method="POST">{% csrf_token %}
+        <input class="form-control" name="id" type="number" value="{{ pet.id }}" hidden />
         <div class="container">
             <div class="form-group" >
                 <label for="email">Email: </label>
-                <input class="form-control" name="email" type="email" />
+                <input class="form-control" name="email" type="email" value="{{ pet.email }}"/>
             </div>
             <div class="form-group" >
                 <label for="phone">Telefone: </label>
-                <input class="form-control" name="phone" type="text" />
+                <input class="form-control" name="phone" type="text" value="{{ pet.phone }}"/>
             </div>
             <div class="form-group" >
                 <label for="city">Cidade: </label>
-                <input class="form-control" name="city" type="text" />
+                <input class="form-control" name="city" type="text" value="{{ pet.city }}"/>
             </div>
             <div class="form-group">
-                <label for="description">Comment:</label>
-                <textarea class="form-control" name="description" rows="3" ></textarea>
+                <label for="description">Descrição:</label>
+                <textarea class="form-control" name="description" rows="3" >{{ pet.description }}</textarea>
             </div>
             <div class="form-group" >
-                <input class="form-control-file vorder" name="file" type="file" accept="image/*" />
+                <a href="/media/{{ pet.photo }}" target="_blank">Foto atual</a>
+                <input class="form-control-file border" name="file" type="file" accept="image/*" />
             </div>
             <button class="btn btn-success">
-                    Cadastrar <span class="badge badge-success"></span>
+                    {% if pet %}
+                        Alterar <span class="badge badge-success"></span>
+                    {% else %}
+                        Cadastrar <span class="badge badge-success"></span>
+                    {% endif%}
             </button>
         </div>
     </form>
